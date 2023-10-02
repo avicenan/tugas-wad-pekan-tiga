@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Form</title>
+  </head>
+  <body>
+    <form action="/form-response.php">
+      <label for="name">Name : </label><br />
+      <input type="text" name="name" /><br />
+      <label for="email">Email : </label><br />
+      <input type="text" name="email" /><br />
+      <label for="message">Message : </label><br />
+      <textarea name="message" id="" cols="45" rows="10"></textarea><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
+
+<script>
+  function updateHtml() {
+    var num_iterate = document.getElementById("input_test3").value;
+    var embed = "";
+    for (var i = 0; i < num_iterate; i++) {
+      embed += "<div><span id='label" + i + "'>Label " + i + "</span>: <input type='text'/></div>";
+    }
+    document.getElementById("content").innerHTML = embed;
+  }
+
+  function changeLabel(index_id, label_value) {
+    document.getElementById("label" + index_id).innerHTML = label_value;
+  }
+
+  function updateHtml2(num_iterate) {
+    var embed = "";
+    for (var i = 0; i < num_iterate; i++) {
+      embed += "<div><input type='text' onChange='changeLabel(" + i + ",this.value);'/></div>";
+    }
+    document.getElementById("content_ref").innerHTML = embed;
+
+    var embed2 = "";
+    for (var i = 0; i < num_iterate; i++) {
+      embed2 += "<div><span id='label" + i + "'>Label " + i + "</span>: <input type='text'/></div>";
+    }
+    document.getElementById("content").innerHTML = embed2;
+  }
+</script>
+<label for="input_test3">Masukkan Angka</label>
+<input type="number" id="input_test3" onChange="updateHtml();" /><br />
+<hr />
+<div id="content_ref"></div>
+<hr />
+<div id="content"></div>

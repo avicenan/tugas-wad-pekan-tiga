@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAD Pekan-3</title>
+  </head>
+  <body>
+    <script>
+      function updateHTML() {
+        num_iterate = document.querySelector("#number").value;
+        embed = "";
+        for (i = 0; i < num_iterate; i++) {
+          embed += "<div><input type='text' onChange='changeLabel(" + i + ",this.value);'/></div>";
+        }
+        document.querySelector("#jenis-form").innerHTML = embed;
+
+        embed2 = "";
+        for (i = 0; i < num_iterate; i++) {
+          embed2 += "<div><span id='label" + i + "'>Label " + i + "</span> : <input type='text' /></div>";
+        }
+        document.querySelector("#hasil-form").innerHTML = embed2;
+      }
+
+      function changeLabel(index_id, label_value) {
+        document.getElementById("label" + index_id).innerHTML = label_value;
+      }
+    </script>
+    <label for="number">Number : </label><br />
+    <input type="number" name="number" id="number" onChange="updateHTML()" /><br />
+    <div class="jenis-form" id="jenis-form"></div>
+    <div class="hasil-form" id="hasil-form"></div>
+  </body>
+</html>
